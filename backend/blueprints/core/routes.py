@@ -6,11 +6,6 @@ from backend.main import predict_handler
 from backend.utils.logger import logger
 
 
-@bp.route('/')
-def home():
-    return "Hello World"
-
-
 @bp.route("/health")
 def health():
     return "Hello World, I'm healty"
