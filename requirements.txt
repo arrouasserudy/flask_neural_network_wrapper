@@ -1,0 +1,10 @@
+requests
+tensorflow==1.14
+keras==2.2.5
+click
+numpy
+Pillow==6.2.0
+flask>=1.1.1
+python-dotenv
+pytest
+bp
