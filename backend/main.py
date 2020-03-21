@@ -1,19 +1,3 @@
-# Wrap a neural network model with Flask
-# what you will do?
-# - get an image as an input
-# - run a neural network on it
-# - return the results
-# - wrap the app with docker with all relevant environment variables
-#   the production start script should be named "serve"
-# - except a /predict API call, add also /health API
-# - eventually we want to call `docker run -p 8080:8080 image_name serve` and it will run the server
-
-# things to take into consideration:
-# logging
-# virtualenv
-# project folder structure
-# use python3.6
-
 from pathlib import Path
 import click
 import numpy as np
@@ -51,8 +35,7 @@ def predict_image(image_path):
         logger.error("File not found %s", image_path)
         abort(500)
 
-    prepared_image = prepare_image(image)
-    image.close()
+    image = prepare_image(image)
     os.remove(image_path)
 
     global model
@@ -64,7 +47,7 @@ def predict_image(image_path):
             logger.error("Failed to load the model")
             abort(500)
     logger.info('Predict...')
-    preds = model.predict(prepared_image)
+    preds = model.predict(image)
     return imagenet_utils.decode_predictions(preds)
 
 

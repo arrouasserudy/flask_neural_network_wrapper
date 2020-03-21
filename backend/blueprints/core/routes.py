@@ -1,5 +1,5 @@
 from backend.blueprints.core.bp import bp
-from flask import (abort, request)
+from flask import abort, request
 import json
 
 from backend.main import predict_handler
@@ -17,7 +17,7 @@ def predict():
     url = body.get('url')
     if not url:
         logger.error(f"URL is missing")
-        abort(401, {"error": "URL is missing"})
+        abort(400, {"error": "URL is missing"})
 
     prediction = predict_handler(url)
     return json.dumps(prediction)
