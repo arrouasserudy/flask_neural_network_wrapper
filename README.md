@@ -1,4 +1,4 @@
-Wrap a neural network model with Flask  
+Wrap a neural network (ResNet50) model with Flask  
 
  # Build docker image
  docker build -t flask_app .
